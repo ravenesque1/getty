@@ -15,17 +15,11 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var username: UILabel!
 
-    @IBOutlet var quotes: [UILabel]!
-
     @IBOutlet var ratingImageViews: [UIImageView]!
 
-    func update(with state: State) {
+    func update(with state: State, review: Review?) {
 
         let labels: [UILabel] = [reviewLabel, username]
-
-
-
-        quotes.forEach { $0.textColor = .white }
 
         switch state {
         case .none:
@@ -39,15 +33,28 @@ class ReviewCell: UITableViewCell {
                 imageView.backgroundColor = .loadingGray
             }
 
-            quotes.forEach { $0.textColor = .white }
-
         case .success:
+
+            guard let review = review else { return }
 
             for label in labels {
                 label.style(.data)
             }
 
-            quotes.forEach { $0.textColor = .black }
+            let reviewText = review.text
+            let prompt  = " (see more)"
+
+            let attributedString = NSMutableAttributedString(string: reviewText)
+
+            let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
+            let boldString = NSMutableAttributedString(string: prompt, attributes: attrs)
+            
+            attributedString.append(boldString)
+
+            reviewLabel.attributedText = attributedString
+            username.text = review.user?.name
+
+            ratingImageViews.setRating(review.rating)
 
         default:
             break

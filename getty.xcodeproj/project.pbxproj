@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		424D80D48D4478B330E9A13A /* libPods-getty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 095A6A9CF2105F2AFF3619C0 /* libPods-getty.a */; };
-		71075B28A9386ECA5E23B066 /* libPods-gettyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4823F8E21F6811416032C1D2 /* libPods-gettyTests.a */; };
+		100E374BE1D88030D0D53FD8 /* Pods_getty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D0DFD1A40EA50960A45697 /* Pods_getty.framework */; };
 		9DB72E11227BDFA0001AF4EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB72E10227BDFA0001AF4EC /* AppDelegate.swift */; };
 		9DB72E13227BDFA0001AF4EC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB72E12227BDFA0001AF4EC /* MainViewController.swift */; };
 		9DB72E16227BDFA0001AF4EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB72E14227BDFA0001AF4EC /* Main.storyboard */; };
@@ -22,6 +21,24 @@
 		9DB72E41227D45BD001AF4EC /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB72E40227D45BD001AF4EC /* ReviewCell.swift */; };
 		9DBF79AE227D5E560057CA32 /* GettyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79AD227D5E560057CA32 /* GettyService.swift */; };
 		9DBF79B0227D5F820057CA32 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79AF227D5F820057CA32 /* UIViewController+Extension.swift */; };
+		9DBF79B6227D71340057CA32 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79B5227D71340057CA32 /* Constants.swift */; };
+		9DBF79B8227D74380057CA32 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79B7227D74380057CA32 /* Business.swift */; };
+		9DBF79BA227D7F250057CA32 /* getty.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DBF79B9227D7F250057CA32 /* getty.json */; };
+		9DBF79BC227DD6B40057CA32 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79BB227DD6B40057CA32 /* Date+Extension.swift */; };
+		9DBF79BE227DDA090057CA32 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79BD227DDA080057CA32 /* Category.swift */; };
+		9DBF79C0227DDA1E0057CA32 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79BF227DDA1E0057CA32 /* Location.swift */; };
+		9DBF79C2227DDA2B0057CA32 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79C1227DDA2A0057CA32 /* Coordinates.swift */; };
+		9DBF79C4227DDA340057CA32 /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79C3227DDA340057CA32 /* Hours.swift */; };
+		9DBF79C6227DDA420057CA32 /* HourUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79C5227DDA420057CA32 /* HourUnit.swift */; };
+		9DBF79C8227DDA4E0057CA32 /* Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79C7227DDA4E0057CA32 /* Messaging.swift */; };
+		9DBF79CA227DDB350057CA32 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79C9227DDB350057CA32 /* Review.swift */; };
+		9DBF79CD227DDDEB0057CA32 /* getty-reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DBF79CB227DDC5D0057CA32 /* getty-reviews.json */; };
+		9DBF79CF227DDFD90057CA32 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79CE227DDFD90057CA32 /* User.swift */; };
+		9DBF79D1227DE01E0057CA32 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79D0227DE01E0057CA32 /* ModelManager.swift */; };
+		9DBF79D3227DE4C60057CA32 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79D2227DE4C60057CA32 /* UIImageView+Extension.swift */; };
+		9DBF79D5227DF6190057CA32 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79D4227DF6190057CA32 /* String+Extension.swift */; };
+		9DBF79D7227E03C90057CA32 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79D6227E03C90057CA32 /* Array+Extension.swift */; };
+		EB0C5E07BE083A59B0B691F6 /* Pods_gettyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0654CCD7606D5BEBF3EF0A38 /* Pods_gettyTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		095A6A9CF2105F2AFF3619C0 /* libPods-getty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-getty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0654CCD7606D5BEBF3EF0A38 /* Pods_gettyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gettyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A9216513C253CBDA4E8508E /* Pods-getty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getty.release.xcconfig"; path = "Target Support Files/Pods-getty/Pods-getty.release.xcconfig"; sourceTree = "<group>"; };
+		26D0DFD1A40EA50960A45697 /* Pods_getty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_getty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		373335EA8B3C7B4FFA25B1CD /* Pods-getty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-getty.debug.xcconfig"; path = "Target Support Files/Pods-getty/Pods-getty.debug.xcconfig"; sourceTree = "<group>"; };
-		4823F8E21F6811416032C1D2 /* libPods-gettyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gettyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB72E0D227BDFA0001AF4EC /* getty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB72E10227BDFA0001AF4EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DB72E12227BDFA0001AF4EC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +73,23 @@
 		9DB72E40227D45BD001AF4EC /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		9DBF79AD227D5E560057CA32 /* GettyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettyService.swift; sourceTree = "<group>"; };
 		9DBF79AF227D5F820057CA32 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		9DBF79B5227D71340057CA32 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9DBF79B7227D74380057CA32 /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		9DBF79B9227D7F250057CA32 /* getty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = getty.json; sourceTree = "<group>"; };
+		9DBF79BB227DD6B40057CA32 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		9DBF79BD227DDA080057CA32 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		9DBF79BF227DDA1E0057CA32 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9DBF79C1227DDA2A0057CA32 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		9DBF79C3227DDA340057CA32 /* Hours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
+		9DBF79C5227DDA420057CA32 /* HourUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourUnit.swift; sourceTree = "<group>"; };
+		9DBF79C7227DDA4E0057CA32 /* Messaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messaging.swift; sourceTree = "<group>"; };
+		9DBF79C9227DDB350057CA32 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		9DBF79CB227DDC5D0057CA32 /* getty-reviews.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = "getty-reviews.json"; sourceTree = "<group>"; };
+		9DBF79CE227DDFD90057CA32 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9DBF79D0227DE01E0057CA32 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		9DBF79D2227DE4C60057CA32 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		9DBF79D4227DF6190057CA32 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		9DBF79D6227E03C90057CA32 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		C716A6F7F6AC3EC72D8C7308 /* Pods-gettyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gettyTests.debug.xcconfig"; path = "Target Support Files/Pods-gettyTests/Pods-gettyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9850F3E2D294681A2A1A0E9 /* Pods-gettyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gettyTests.release.xcconfig"; path = "Target Support Files/Pods-gettyTests/Pods-gettyTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				424D80D48D4478B330E9A13A /* libPods-getty.a in Frameworks */,
+				100E374BE1D88030D0D53FD8 /* Pods_getty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71075B28A9386ECA5E23B066 /* libPods-gettyTests.a in Frameworks */,
+				EB0C5E07BE083A59B0B691F6 /* Pods_gettyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +141,7 @@
 				9DB72E19227BDFA1001AF4EC /* LaunchScreen.storyboard */,
 				9DB72E1C227BDFA1001AF4EC /* Info.plist */,
 				9DB72E32227BE5FD001AF4EC /* Podfile */,
+				9DBF79B3227D70520057CA32 /* models */,
 				9DB72E3F227D3ED9001AF4EC /* network */,
 				9DB72E3C227D3EA9001AF4EC /* viewmodels */,
 				9DB72E31227BE474001AF4EC /* ui */,
@@ -120,6 +155,8 @@
 			children = (
 				9DB72E25227BDFA2001AF4EC /* gettyTests.swift */,
 				9DB72E27227BDFA2001AF4EC /* Info.plist */,
+				9DBF79B9227D7F250057CA32 /* getty.json */,
+				9DBF79CB227DDC5D0057CA32 /* getty-reviews.json */,
 			);
 			path = gettyTests;
 			sourceTree = "<group>";
@@ -138,7 +175,7 @@
 			children = (
 				9DB72E14227BDFA0001AF4EC /* Main.storyboard */,
 				9DB72E12227BDFA0001AF4EC /* MainViewController.swift */,
-				9DB72E40227D45BD001AF4EC /* ReviewCell.swift */,
+				9DBF79D8227E04BB0057CA32 /* views */,
 				9DB72E37227D14F2001AF4EC /* extensions */,
 			);
 			path = ui;
@@ -149,6 +186,10 @@
 			children = (
 				9DB72E38227D14FF001AF4EC /* UIView+Extension.swift */,
 				9DBF79AF227D5F820057CA32 /* UIViewController+Extension.swift */,
+				9DBF79BB227DD6B40057CA32 /* Date+Extension.swift */,
+				9DBF79D2227DE4C60057CA32 /* UIImageView+Extension.swift */,
+				9DBF79D4227DF6190057CA32 /* String+Extension.swift */,
+				9DBF79D6227E03C90057CA32 /* Array+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -165,15 +206,41 @@
 			isa = PBXGroup;
 			children = (
 				9DBF79AD227D5E560057CA32 /* GettyService.swift */,
+				9DBF79B5227D71340057CA32 /* Constants.swift */,
 			);
 			path = network;
+			sourceTree = "<group>";
+		};
+		9DBF79B3227D70520057CA32 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				9DBF79B7227D74380057CA32 /* Business.swift */,
+				9DBF79D0227DE01E0057CA32 /* ModelManager.swift */,
+				9DBF79BD227DDA080057CA32 /* Category.swift */,
+				9DBF79C1227DDA2A0057CA32 /* Coordinates.swift */,
+				9DBF79C3227DDA340057CA32 /* Hours.swift */,
+				9DBF79C5227DDA420057CA32 /* HourUnit.swift */,
+				9DBF79BF227DDA1E0057CA32 /* Location.swift */,
+				9DBF79C7227DDA4E0057CA32 /* Messaging.swift */,
+				9DBF79C9227DDB350057CA32 /* Review.swift */,
+				9DBF79CE227DDFD90057CA32 /* User.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		9DBF79D8227E04BB0057CA32 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				9DB72E40227D45BD001AF4EC /* ReviewCell.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		CEC4BCB2B1E069B54691812D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				095A6A9CF2105F2AFF3619C0 /* libPods-getty.a */,
-				4823F8E21F6811416032C1D2 /* libPods-gettyTests.a */,
+				26D0DFD1A40EA50960A45697 /* Pods_getty.framework */,
+				0654CCD7606D5BEBF3EF0A38 /* Pods_gettyTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -200,6 +267,7 @@
 				9DB72E09227BDFA0001AF4EC /* Sources */,
 				9DB72E0A227BDFA0001AF4EC /* Frameworks */,
 				9DB72E0B227BDFA0001AF4EC /* Resources */,
+				B5FD4675473D3129C6973DDA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -283,6 +351,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DBF79CD227DDDEB0057CA32 /* getty-reviews.json in Resources */,
+				9DBF79BA227D7F250057CA32 /* getty.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +379,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5FD4675473D3129C6973DDA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-getty/Pods-getty-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-getty/Pods-getty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E0C9139A3E337AF6D0EA18B2 /* [CP] Check Pods Manifest.lock */ = {
@@ -341,13 +441,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DBF79B0227D5F820057CA32 /* UIViewController+Extension.swift in Sources */,
+				9DBF79BC227DD6B40057CA32 /* Date+Extension.swift in Sources */,
 				9DB72E3E227D3EC0001AF4EC /* MainViewModel.swift in Sources */,
 				9DB72E41227D45BD001AF4EC /* ReviewCell.swift in Sources */,
+				9DBF79B8227D74380057CA32 /* Business.swift in Sources */,
 				9DB72E39227D14FF001AF4EC /* UIView+Extension.swift in Sources */,
+				9DBF79C0227DDA1E0057CA32 /* Location.swift in Sources */,
+				9DBF79C6227DDA420057CA32 /* HourUnit.swift in Sources */,
+				9DBF79C4227DDA340057CA32 /* Hours.swift in Sources */,
+				9DBF79D3227DE4C60057CA32 /* UIImageView+Extension.swift in Sources */,
 				9DBF79AE227D5E560057CA32 /* GettyService.swift in Sources */,
 				9DB72E13227BDFA0001AF4EC /* MainViewController.swift in Sources */,
+				9DBF79D5227DF6190057CA32 /* String+Extension.swift in Sources */,
+				9DBF79D7227E03C90057CA32 /* Array+Extension.swift in Sources */,
+				9DBF79CA227DDB350057CA32 /* Review.swift in Sources */,
+				9DBF79C2227DDA2B0057CA32 /* Coordinates.swift in Sources */,
 				9DB72E3B227D3E34001AF4EC /* Configuration.swift in Sources */,
 				9DB72E11227BDFA0001AF4EC /* AppDelegate.swift in Sources */,
+				9DBF79B6227D71340057CA32 /* Constants.swift in Sources */,
+				9DBF79C8227DDA4E0057CA32 /* Messaging.swift in Sources */,
+				9DBF79D1227DE01E0057CA32 /* ModelManager.swift in Sources */,
+				9DBF79BE227DDA090057CA32 /* Category.swift in Sources */,
+				9DBF79CF227DDFD90057CA32 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

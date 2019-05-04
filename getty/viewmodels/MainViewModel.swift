@@ -12,6 +12,7 @@ protocol MainViewDelegate {
 
 class MainViewModel {
 
+    private var gettyId = "zRlDhJgcwXEphTUhMaCfyw"
 
     var viewDelegate: MainViewDelegate?
 
@@ -23,14 +24,41 @@ class MainViewModel {
 
     func loadGetty() {
         state = .loading
+
+        fetchGetty()
     }
 
     private func fetchGetty() {
+        GettyService.shared.getBusiness(id: gettyId) { business, error in
+            guard let business = business, error == nil else {
+                self.state = .error
+                return
+            }
 
+            let realm = ModelManager.shared.realm
+
+            try? realm.write {
+                realm.add(business, update: true)
+            }
+
+            self.state = .success
+        }
+
+        silentFetchGettyReviews()
     }
 
-    private func fetchGettyReviews() {
+    private func silentFetchGettyReviews() {
+        GettyService.shared.getReviews(id: gettyId) { reviews, error in
+            guard let reviews = reviews, error == nil else {
+                return
+            }
 
+            let realm = ModelManager.shared.realm
+
+            try? realm.write {
+                realm.add(reviews, update: true)
+            }
+        }
     }
 }
 

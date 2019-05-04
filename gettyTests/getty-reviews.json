@@ -1,9 +1,52 @@
-//
-//  getty-reviews.swift
-//  gettyTests
-//
-//  Created by Raven Weitzel on 5/4/19.
-//  Copyright © 2019 Raven Weitzel. All rights reserved.
-//
-
-import Foundation
+{
+    "reviews": [
+    {
+    "id": "aKOPwm7wAXjgISpJ7VL8nw",
+    "url": "https://www.yelp.com/biz/the-getty-center-los-angeles-6?adjust_creative=lhtScJ_Z2Oh3518hCt-_Zw&hrid=aKOPwm7wAXjgISpJ7VL8nw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=lhtScJ_Z2Oh3518hCt-_Zw",
+    "text": "The Getty Center was great! I came on a weekday with my dad and grandmother and we all really enjoyed our time. The crowd was very few and there's no...",
+    "rating": 5,
+    "time_created": "2019-04-30 17:10:58",
+    "user": {
+    "id": "8_xJU4HADrtjDtF6l-9eIQ",
+    "profile_url": "https://www.yelp.com/user_details?userid=8_xJU4HADrtjDtF6l-9eIQ",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/photo/H7myxTLrQPGiZnIdDkNYmg/o.jpg",
+    "name": "Amber B."
+    }
+    },
+    {
+    "id": "djXDZsx2jY-kLPqRanRMzg",
+    "url": "https://www.yelp.com/biz/the-getty-center-los-angeles-6?adjust_creative=lhtScJ_Z2Oh3518hCt-_Zw&hrid=djXDZsx2jY-kLPqRanRMzg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=lhtScJ_Z2Oh3518hCt-_Zw",
+    "text": "I come here pretty often. I have been taking my kids to the Getty since my eldest daughter was 6 months old. Now I bring both my kids. ages 11 and 5 1/2. we...",
+    "rating": 5,
+    "time_created": "2019-04-24 12:35:06",
+    "user": {
+    "id": "vG_zcCDQtAz3hkYA_d6tcA",
+    "profile_url": "https://www.yelp.com/user_details?userid=vG_zcCDQtAz3hkYA_d6tcA",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/photo/SXt4CQMv4c_txGKQclwcmw/o.jpg",
+    "name": "Bethany N."
+    }
+    },
+    {
+    "id": "edR5Xj7KUghV8HTa3xX8Ow",
+    "url": "https://www.yelp.com/biz/the-getty-center-los-angeles-6?adjust_creative=lhtScJ_Z2Oh3518hCt-_Zw&hrid=edR5Xj7KUghV8HTa3xX8Ow&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_reviews&utm_source=lhtScJ_Z2Oh3518hCt-_Zw",
+    "text": "Getty Center is a must see when in Los Angeles. It has amazing views, great architecture and beautiful landscaping.  Vincent Van Gogh,Rembrandt, Pierre...",
+    "rating": 5,
+    "time_created": "2019-04-22 18:43:29",
+    "user": {
+    "id": "emVUAnSZevBeZ5pGPUn-wg",
+    "profile_url": "https://www.yelp.com/user_details?userid=emVUAnSZevBeZ5pGPUn-wg",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/photo/U7zOWwivqCTGIuV1l8wIsQ/o.jpg",
+    "name": "Gohar K."
+    }
+    }
+    ],
+    "total": 3027,
+    "possible_languages": [
+    "fr",
+    "en",
+    "pt",
+    "de",
+    "tr",
+    "ja"
+    ]
+}

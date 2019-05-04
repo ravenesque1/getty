@@ -1,9 +1,14 @@
 platform :ios, '11.0'
 
 inhibit_all_warnings!
+use_frameworks!
 
 target 'getty' do
+    pod 'Alamofire', '4.8.2'
+    pod 'RealmSwift', '3.14.0'
     pod 'SwiftLint', '0.31.0'
+    pod 'KeychainSwift', '13.0.0'
+    pod 'AlamofireImage', '3.5.1'
 
     target 'gettyTests' do
         inherit! :search_paths

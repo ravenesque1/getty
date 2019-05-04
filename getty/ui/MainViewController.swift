@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Alamofire
+import RealmSwift
 
 class MainViewController: StatefulViewController {
 
@@ -50,12 +51,25 @@ class MainViewController: StatefulViewController {
     // MARK: Properties
 
     lazy var mainViewModel = MainViewModel()
+    lazy var business = ModelManager.shared.realm.objects(Business.self).first
+
+    var reviewsUpdated: NotificationToken?
+    lazy var reviews: Results<Review>  = {
+        let objects = ModelManager.shared.realm.objects(Review.self)
+
+        reviewsUpdated = objects.observe { [weak self] _ in
+            self?.reviewsTableView.reloadData()
+        }
+        return objects
+    }()
 
     private var state: State = .none {
         didSet {
             updateView()
         }
     }
+
+    private var isLoaded = false
 
 
     // MARK: Lifecycle
@@ -64,13 +78,18 @@ class MainViewController: StatefulViewController {
 
         configureToggleAnimations()
         mainViewModel.viewDelegate = self
+        isLoaded = true
         updateView()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         mainViewModel.loadGetty()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
@@ -99,6 +118,9 @@ extension MainViewController {
 extension MainViewController {
 
     private func updateView() {
+
+        guard isLoaded else { return }
+
         updateDisplay(newState: state)
         updateOverview(newState: state)
         updateDetails(newState: state)
@@ -109,6 +131,8 @@ extension MainViewController {
 
         let displayLabels: [UILabel] = [displayTitleLabel, displayLocationLabel]
 
+        moreButton.setImage(UIImage(named: "expand")?.withRenderingMode(.alwaysTemplate), for: .normal)
+
         switch newState {
         case .none:
 
@@ -118,9 +142,29 @@ extension MainViewController {
                 label.style(.hiddenLoading)
             }
 
-            moreButton.imageView?.image =  UIImage(named: "expand")?.withRenderingMode(.alwaysTemplate)
             moreButton.imageView?.tintColor = .loadingGray
 
+        case .success:
+            displayImageView.setImage(urlString: business?.imageUrl)
+            displayTitleLabel.text = business?.name
+
+            var location = ""
+
+            if let city = business?.location?.city {
+                location += "\(city)"
+            }
+
+            if let state = business?.location?.state {
+                location += ", \(state)"
+            }
+
+            displayLocationLabel.text = location
+
+            for label in displayLabels {
+                label.style(.dataDisplay)
+            }
+
+            moreButton.imageView?.tintColor = .white
         default:
             break
         }
@@ -136,6 +180,24 @@ extension MainViewController {
             }
 
             quickHoursLabel.style(.hiddenLoading)
+
+        case .success:
+
+            guard let rating = business?.rating else {
+                return
+            }
+
+            overallReviewImageViews.setRating(rating)
+
+            guard let isOpen = business?.hours.first?.isOpenNow else { return }
+
+            var quickHoursText = "currently "
+            quickHoursText += isOpen ? "open" : "closed"
+            let quickHoursColor: UIColor = isOpen ? .currentlyOpenGreen : .currentlyClosedRed
+
+            quickHoursLabel.text = quickHoursText
+            quickHoursLabel.textColor = quickHoursColor
+            quickHoursLabel.backgroundColor = .white
 
         default:
             break
@@ -162,6 +224,44 @@ extension MainViewController {
             hoursLabel.style(.hiddenLoading)
 
             website.gestureRecognizers = nil
+        case .success:
+            toggleImageViews.forEach { imageView in
+                imageView.image =  UIImage(named: "expand")?.withRenderingMode(.alwaysTemplate)
+                imageView.tintColor = .black
+            }
+
+            toggleLabels.forEach { $0.style(.data) }
+            aboutLabels.forEach { $0.style(.data) }
+
+            guard let business = business else { return }
+
+            addressLine1.text = business.location?.address1
+
+            var line2 = ""
+
+            if let city = business.location?.city {
+                line2 += "\(city)"
+            }
+
+            if let state = business.location?.state {
+                line2 += ", \(state)"
+            }
+
+            addressLine2.text = line2
+
+            phoneNumber.text = business.displayPhone
+
+            website.text = "Visit website"
+            website.textColor = .blue
+
+            website.addTapGestureRecognizer() {
+                if let url = URL(string: business.url) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+
+            showBusinessHours()
+            hoursLabel.style(.data)
         default:
             break
         }
@@ -171,16 +271,48 @@ extension MainViewController {
         switch newState {
         case .none:
             showNoCategories()
+        case .success:
+            guard let categories = business?.categories else { return }
+
+            showCategories(categories.map { $0.title}, style: .data)
         default:
             break
         }
     }
 
+    private func showBusinessHours() {
+        guard let hours = business?.hours.first?.open else { return }
+
+        let daysOpen = Array(hours.map { $0.day })
+
+        var hoursText: [String] = []
+        var hoursDict: [Int: HourUnit] = [:]
+
+        for hour in hours {
+            hoursDict[hour.day] = hour
+        }
+
+        for idx in 0...6 {
+            var value: String
+
+            if !daysOpen.contains(idx) {
+                value = "closed"
+            } else {
+                guard let start = hoursDict[idx]?.start.fromMilitaryToStandard(),
+                    let end = hoursDict[idx]?.end.fromMilitaryToStandard() else { return }
+                value = "\(start)\t -\t\(end)"
+            }
+            hoursText.append(value)
+        }
+
+        showHours(hoursText)
+    }
+
     private func showNoHours() {
-        var sampleHours: [(String, String)] = []
+        var sampleHours: [String] = []
 
         for _ in 1...7 {
-            sampleHours += [("8:00", "5:00")]
+            sampleHours += [("8:00 \t-\t 5:00")]
         }
 
         showHours(sampleHours)
@@ -194,7 +326,7 @@ extension MainViewController {
         showCategories(samples, style: .hiddenLoading)
     }
 
-    private func showHours(_ hours: [(String, String)]) {
+    private func showHours(_ hours: [String]) {
         let days = ["Monday\t\t",
                     "Tuesday\t\t",
                     "Wednesday\t",
@@ -206,7 +338,7 @@ extension MainViewController {
         var hoursText = ""
 
         for (idx, day) in days.enumerated() {
-            hoursText += "\(day): \t \(hours[idx].0)\t-\t\(hours[idx].1)\n"
+            hoursText += "\(day): \t \(hours[idx])\n"
         }
 
         hoursLabel.text = hoursText
@@ -227,12 +359,29 @@ extension MainViewController {
                 label.layer.borderWidth = 0.0
             case .data:
                 label.layer.borderWidth = 2.0
+            default:
+                break
             }
 
             label.style(style)
 
             categoriesStackView.addArrangedSubview(label)
         }
+    }
+
+    private func showGettyFetchError() {
+        let alert = UIAlertController(title: "Error",
+                                      message: "There was a problem loading Getty",
+                                      preferredStyle: .alert)
+
+        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let retry = UIAlertAction(title: "Retry", style: .default) { _ in self.mainViewModel.loadGetty() }
+
+        alert.addAction(cancel)
+        alert.addAction(retry)
+        alert.preferredAction = retry
+
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -257,8 +406,11 @@ extension MainViewController: MainViewDelegate {
         switch state {
         case .loading:
             showWaitOverlay()
+        case .error:
+            showGettyFetchError()
+            fallthrough
         default:
-            break
+            hideOverlay()
         }
     }
 }
@@ -271,14 +423,31 @@ extension MainViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.reuseIdentifier, for: indexPath)
 
         if let cell = cell as? ReviewCell {
-            cell.update(with: state)
+            let reviewState: State = reviews.count > 0 ? .success : .none
+            var review: Review?
+
+            if reviews.count > 0 {
+                review = reviews[indexPath.row]
+            }
+
+            cell.update(with: reviewState, review: review)
         }
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return reviews.count == 0 ? 1 : reviews.count
     }
 }
 
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        if let url = URL(string: reviews[indexPath.row].url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+}
