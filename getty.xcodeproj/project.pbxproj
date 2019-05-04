@@ -90,6 +90,7 @@
 		9DBF79D2227DE4C60057CA32 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		9DBF79D4227DF6190057CA32 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9DBF79D6227E03C90057CA32 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		9DBF79D9227E084D0057CA32 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		C716A6F7F6AC3EC72D8C7308 /* Pods-gettyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gettyTests.debug.xcconfig"; path = "Target Support Files/Pods-gettyTests/Pods-gettyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9850F3E2D294681A2A1A0E9 /* Pods-gettyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gettyTests.release.xcconfig"; path = "Target Support Files/Pods-gettyTests/Pods-gettyTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +142,7 @@
 				9DB72E19227BDFA1001AF4EC /* LaunchScreen.storyboard */,
 				9DB72E1C227BDFA1001AF4EC /* Info.plist */,
 				9DB72E32227BE5FD001AF4EC /* Podfile */,
+				9DBF79D9227E084D0057CA32 /* README.md */,
 				9DBF79B3227D70520057CA32 /* models */,
 				9DB72E3F227D3ED9001AF4EC /* network */,
 				9DB72E3C227D3EA9001AF4EC /* viewmodels */,
