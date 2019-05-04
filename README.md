@@ -10,6 +10,7 @@ Setup is very simple. Clone the project, pod install, then go!
 
 ```
 git clone https://github.com/ravenesque1/getty.git
+cd getty
 pod install
 open getty.xcworkspace
 ```
