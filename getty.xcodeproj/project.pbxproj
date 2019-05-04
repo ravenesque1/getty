@@ -20,6 +20,8 @@
 		9DB72E3B227D3E34001AF4EC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB72E3A227D3E34001AF4EC /* Configuration.swift */; };
 		9DB72E3E227D3EC0001AF4EC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB72E3D227D3EC0001AF4EC /* MainViewModel.swift */; };
 		9DB72E41227D45BD001AF4EC /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB72E40227D45BD001AF4EC /* ReviewCell.swift */; };
+		9DBF79AE227D5E560057CA32 /* GettyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79AD227D5E560057CA32 /* GettyService.swift */; };
+		9DBF79B0227D5F820057CA32 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBF79AF227D5F820057CA32 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,11 +49,13 @@
 		9DB72E21227BDFA2001AF4EC /* gettyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gettyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB72E25227BDFA2001AF4EC /* gettyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gettyTests.swift; sourceTree = "<group>"; };
 		9DB72E27227BDFA2001AF4EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9DB72E32227BE5FD001AF4EC /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
+		9DB72E32227BE5FD001AF4EC /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DB72E38227D14FF001AF4EC /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9DB72E3A227D3E34001AF4EC /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		9DB72E3D227D3EC0001AF4EC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		9DB72E40227D45BD001AF4EC /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		9DBF79AD227D5E560057CA32 /* GettyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettyService.swift; sourceTree = "<group>"; };
+		9DBF79AF227D5F820057CA32 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C716A6F7F6AC3EC72D8C7308 /* Pods-gettyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gettyTests.debug.xcconfig"; path = "Target Support Files/Pods-gettyTests/Pods-gettyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9850F3E2D294681A2A1A0E9 /* Pods-gettyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gettyTests.release.xcconfig"; path = "Target Support Files/Pods-gettyTests/Pods-gettyTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				9DB72E38227D14FF001AF4EC /* UIView+Extension.swift */,
+				9DBF79AF227D5F820057CA32 /* UIViewController+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 		9DB72E3F227D3ED9001AF4EC /* network */ = {
 			isa = PBXGroup;
 			children = (
+				9DBF79AD227D5E560057CA32 /* GettyService.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -334,9 +340,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DBF79B0227D5F820057CA32 /* UIViewController+Extension.swift in Sources */,
 				9DB72E3E227D3EC0001AF4EC /* MainViewModel.swift in Sources */,
 				9DB72E41227D45BD001AF4EC /* ReviewCell.swift in Sources */,
 				9DB72E39227D14FF001AF4EC /* UIView+Extension.swift in Sources */,
+				9DBF79AE227D5E560057CA32 /* GettyService.swift in Sources */,
 				9DB72E13227BDFA0001AF4EC /* MainViewController.swift in Sources */,
 				9DB72E3B227D3E34001AF4EC /* Configuration.swift in Sources */,
 				9DB72E11227BDFA0001AF4EC /* AppDelegate.swift in Sources */,

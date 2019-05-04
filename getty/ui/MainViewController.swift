@@ -9,7 +9,7 @@
 import UIKit
 
 
-class MainViewController: UIViewController {
+class MainViewController: StatefulViewController {
 
     // MARK: Storyboard References
 
@@ -18,12 +18,15 @@ class MainViewController: UIViewController {
     @IBOutlet var toggles: [UIView]!
     @IBOutlet var toggleDetails: [UIView]!
     @IBOutlet var toggleBottomConstraints: [NSLayoutConstraint]!
+    @IBOutlet var toggleImageViews: [UIImageView]!
+    @IBOutlet var toggleLabels: [UILabel]!
 
     //display
     @IBOutlet weak var displayStackView: UIStackView!
     @IBOutlet weak var displayImageView: UIImageView!
     @IBOutlet weak var displayTitleLabel: UILabel!
     @IBOutlet weak var displayLocationLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
 
     //overview
     @IBOutlet var overallReviewImageViews: [UIImageView]!
@@ -46,58 +49,152 @@ class MainViewController: UIViewController {
 
     // MARK: Properties
 
-    private var mainViewModel = MainViewModel()
+    lazy var mainViewModel = MainViewModel()
+
+    private var state: State = .none {
+        didSet {
+            updateView()
+        }
+    }
 
 
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       configureInitialState()
+        configureToggleAnimations()
+        mainViewModel.viewDelegate = self
+        updateView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        mainViewModel.loadGetty()
     }
 }
 
 // MARK: - Configuration
 extension MainViewController {
 
-    private func configureInitialState() {
-        displayImageView.backgroundColor = UIColor.loadingGray.withAlphaComponent(0.5)
+    private func configureToggleAnimations() {
 
-        displayTitleLabel.textColor = .loadingGray
-        displayTitleLabel.backgroundColor = .loadingGray
+        for idx in 0...2 {
 
-        displayLocationLabel.textColor = .loadingGray
-        displayLocationLabel.backgroundColor = .loadingGray
+            let toggle = toggles[idx]
+            let toggleImageView = toggleImageViews[idx]
+            let detail = toggleDetails[idx]
+            let constraint = toggleBottomConstraints[idx]
 
-        overallReviewImageViews.forEach { imageView in
-            imageView.image = nil
-            imageView.backgroundColor = .loadingGray
+            toggle.addTapGestureRecognizer() {
+                detail.isHidden = !detail.isHidden
+                constraint.isActive = detail.isHidden
+                toggleImageView.transform = toggleImageView.transform.rotated(by: .pi)
+            }
         }
+    }
+}
 
-        quickHoursLabel.textColor = .loadingGray
-        quickHoursLabel.backgroundColor = .loadingGray
+// MARK: - State Changes
+extension MainViewController {
 
-        addressLine1.textColor = .loadingGray
-        addressLine1.backgroundColor = .loadingGray
-        addressLine2.textColor = .loadingGray
-        addressLine2.backgroundColor = .loadingGray
-        phoneNumber.textColor = .loadingGray
-        phoneNumber.backgroundColor = .loadingGray
-
-        website.textColor = .loadingGray
-        website.backgroundColor = .loadingGray
-        website.gestureRecognizers = nil
-
-        hoursLabel.backgroundColor = .loadingGray
-        hoursLabel.textColor = .loadingGray
-
-        configureSampleCategories()
-
-        configureToggleAnimations()
+    private func updateView() {
+        updateDisplay(newState: state)
+        updateOverview(newState: state)
+        updateDetails(newState: state)
+        updateCategories(newState: state)
     }
 
-    private func configureHours() {
+    private func updateDisplay(newState: State) {
 
+        let displayLabels: [UILabel] = [displayTitleLabel, displayLocationLabel]
+
+        switch newState {
+        case .none:
+
+            displayImageView.backgroundColor = UIColor.loadingGray.withAlphaComponent(0.5)
+
+            for label in displayLabels {
+                label.style(.hiddenLoading)
+            }
+
+            moreButton.imageView?.image =  UIImage(named: "expand")?.withRenderingMode(.alwaysTemplate)
+            moreButton.imageView?.tintColor = .loadingGray
+
+        default:
+            break
+        }
+    }
+
+    private func updateOverview(newState: State) {
+        switch newState {
+        case .none:
+
+            overallReviewImageViews.forEach { imageView in
+                imageView.image = nil
+                imageView.backgroundColor = .loadingGray
+            }
+
+            quickHoursLabel.style(.hiddenLoading)
+
+        default:
+            break
+        }
+    }
+
+    private func updateDetails(newState: State) {
+
+        let aboutLabels: [UILabel] = [ addressLine1,
+                                       addressLine2,
+                                       phoneNumber,
+                                       website ]
+
+        switch newState {
+        case .none:
+            toggleImageViews.forEach { imageView in
+                imageView.image =  UIImage(named: "expand")?.withRenderingMode(.alwaysTemplate)
+                imageView.tintColor = .loadingGray
+            }
+
+            toggleLabels.forEach { $0.style(.loading) }
+
+            aboutLabels.forEach { $0.style(.hiddenLoading) }
+            hoursLabel.style(.hiddenLoading)
+
+            website.gestureRecognizers = nil
+        default:
+            break
+        }
+    }
+
+    private func updateCategories(newState: State) {
+        switch newState {
+        case .none:
+            showNoCategories()
+        default:
+            break
+        }
+    }
+
+    private func showNoHours() {
+        var sampleHours: [(String, String)] = []
+
+        for _ in 1...7 {
+            sampleHours += [("8:00", "5:00")]
+        }
+
+        showHours(sampleHours)
+    }
+
+    private func showNoCategories() {
+        let samples = ["Dining",
+                       "Dating",
+                       "Something"]
+
+        showCategories(samples, style: .hiddenLoading)
+    }
+
+    private func showHours(_ hours: [(String, String)]) {
         let days = ["Monday\t\t",
                     "Tuesday\t\t",
                     "Wednesday\t",
@@ -105,59 +202,36 @@ extension MainViewController {
                     "Friday\t\t\t",
                     "Saturday\t\t",
                     "Sunday\t\t"]
-        var hours = ""
 
-        for day in days {
-            hours += "\(day): \t 8:00\t-\t5:00\n"
+        var hoursText = ""
+
+        for (idx, day) in days.enumerated() {
+            hoursText += "\(day): \t \(hours[idx].0)\t-\t\(hours[idx].1)\n"
         }
 
-        hoursLabel.text = hours
+        hoursLabel.text = hoursText
     }
 
-    private func configureSampleCategories() {
-        let samples = ["Dining",
-                          "Dating",
-                          "Something"]
-
-        configureCategories(samples)
-
-        for subview in categoriesStackView.arrangedSubviews {
-            if let label = subview as? UILabel {
-                label.textColor = .loadingGray
-                label.backgroundColor = .loadingGray
-                label.layer.borderWidth = 0.0
-            }
-        }
-    }
-
-    private func configureCategories(_ categories: [String]) {
+    private func showCategories(_ categories: [String], style: Style) {
         categoriesStackView.arrangedSubviews.forEach { categoriesStackView.removeArrangedSubview($0)}
-
-
 
         for category in categories {
             let label = UILabel()
+
             label.text = category
-            label.layer.borderWidth = 2.0
             label.layer.cornerRadius = 2.0
             label.textAlignment = .center
 
-            categoriesStackView.addArrangedSubview(label)
-        }
-    }
-
-    private func configureToggleAnimations() {
-
-        for idx in 0...2 {
-
-            let toggle = toggles[idx]
-            let detail = toggleDetails[idx]
-            let constraint = toggleBottomConstraints[idx]
-
-            toggle.addTapGestureRecognizer() {
-                detail.isHidden = !detail.isHidden
-                constraint.isActive = detail.isHidden
+            switch style {
+            case .hiddenLoading, .loading:
+                label.layer.borderWidth = 0.0
+            case .data:
+                label.layer.borderWidth = 2.0
             }
+
+            label.style(style)
+
+            categoriesStackView.addArrangedSubview(label)
         }
     }
 }
@@ -177,7 +251,12 @@ extension MainViewController {
 // MARK: - Data Updating
 extension MainViewController: MainViewDelegate {
     func didUpdateState(_ state: State) {
+
+        self.state = state
+
         switch state {
+        case .loading:
+            showWaitOverlay()
         default:
             break
         }
@@ -192,14 +271,14 @@ extension MainViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.reuseIdentifier, for: indexPath)
 
         if let cell = cell as? ReviewCell {
-            cell.configureInitialState()
+            cell.update(with: state)
         }
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
 }
 

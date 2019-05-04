@@ -1,0 +1,91 @@
+{
+    "id": "zRlDhJgcwXEphTUhMaCfyw",
+    "alias": "the-getty-center-los-angeles-6",
+    "name": "The Getty Center",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/XfhEmq_oSF7l1D-j4FciHQ/o.jpg",
+    "is_claimed": true,
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/the-getty-center-los-angeles-6?adjust_creative=lhtScJ_Z2Oh3518hCt-_Zw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=lhtScJ_Z2Oh3518hCt-_Zw",
+    "phone": "+13104407300",
+    "display_phone": "(310) 440-7300",
+    "review_count": 3027,
+    "categories": [
+        {
+            "alias": "artmuseums",
+            "title": "Art Museums"
+        }
+    ],
+    "rating": 4.5,
+    "location": {
+        "address1": "1200 Getty Center Dr",
+        "address2": "",
+        "address3": "",
+        "city": "Los Angeles",
+        "zip_code": "90049",
+        "country": "US",
+        "state": "CA",
+        "display_address": [
+            "1200 Getty Center Dr",
+            "Los Angeles, CA 90049"
+        ],
+        "cross_streets": ""
+    },
+    "coordinates": {
+        "latitude": 34.077794218403,
+        "longitude": -118.473945310349
+    },
+    "photos": [
+        "https://s3-media4.fl.yelpcdn.com/bphoto/XfhEmq_oSF7l1D-j4FciHQ/o.jpg",
+        "https://s3-media1.fl.yelpcdn.com/bphoto/R95DhJDhTojO6tScrdfCNw/o.jpg",
+        "https://s3-media1.fl.yelpcdn.com/bphoto/4H1qCDKGPQ7xqbwWpR_WpQ/o.jpg"
+    ],
+    "hours": [
+        {
+            "open": [
+                {
+                    "is_overnight": false,
+                    "start": "1000",
+                    "end": "1730",
+                    "day": 1
+                },
+                {
+                    "is_overnight": false,
+                    "start": "1000",
+                    "end": "1730",
+                    "day": 2
+                },
+                {
+                    "is_overnight": false,
+                    "start": "1000",
+                    "end": "1730",
+                    "day": 3
+                },
+                {
+                    "is_overnight": false,
+                    "start": "1000",
+                    "end": "1730",
+                    "day": 4
+                },
+                {
+                    "is_overnight": false,
+                    "start": "1000",
+                    "end": "2100",
+                    "day": 5
+                },
+                {
+                    "is_overnight": false,
+                    "start": "1000",
+                    "end": "1730",
+                    "day": 6
+                }
+            ],
+            "hours_type": "REGULAR",
+            "is_open_now": false
+        }
+    ],
+    "transactions": [],
+    "messaging": {
+        "url": "https://www.yelp.com/raq/the-getty-center-los-angeles-6?adjust_creative=lhtScJ_Z2Oh3518hCt-_Zw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=lhtScJ_Z2Oh3518hCt-_Zw#popup%3Araq",
+        "use_case_text": "Message the Business"
+    }
+}

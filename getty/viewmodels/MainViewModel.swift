@@ -6,13 +6,6 @@
 //  Copyright © 2019 Raven Weitzel. All rights reserved.
 //
 
-enum State {
-    case none
-    case loading
-    case success
-    case error
-}
-
 protocol MainViewDelegate {
     func didUpdateState(_ state: State)
 }
@@ -32,11 +25,11 @@ class MainViewModel {
         state = .loading
     }
 
-    func fetchGetty() {
+    private func fetchGetty() {
 
     }
 
-    func fetchGettyReviews() {
+    private func fetchGettyReviews() {
 
     }
 }

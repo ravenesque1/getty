@@ -19,18 +19,38 @@ class ReviewCell: UITableViewCell {
 
     @IBOutlet var ratingImageViews: [UIImageView]!
 
-    func configureInitialState() {
-        reviewLabel.textColor = .loadingGray
-        reviewLabel.backgroundColor = .loadingGray
+    func update(with state: State) {
 
-        username.textColor = .loadingGray
-        username.backgroundColor = .loadingGray
+        let labels: [UILabel] = [reviewLabel, username]
 
-        for imageView in ratingImageViews {
-            imageView.image = nil
-            imageView.backgroundColor = .loadingGray
-        }
+
 
         quotes.forEach { $0.textColor = .white }
+
+        switch state {
+        case .none:
+
+            for label in labels {
+                label.style(.hiddenLoading)
+            }
+
+            for imageView in ratingImageViews {
+                imageView.image = nil
+                imageView.backgroundColor = .loadingGray
+            }
+
+            quotes.forEach { $0.textColor = .white }
+
+        case .success:
+
+            for label in labels {
+                label.style(.data)
+            }
+
+            quotes.forEach { $0.textColor = .black }
+
+        default:
+            break
+        }
     }
 }
